@@ -53,10 +53,11 @@ public class Terrain {
     }
 
     public void print(){
-        for( Case[] c : carte){
-            for(Case e : c){
-                System.out.print(e.toString());
+        for(int i=0; i<hauteur;i++){
+            for(int j=0;j<largeur;j++){
+                System.out.print(carte[i][j].toString());
             }
+            System.out.println();
         }
     }
 

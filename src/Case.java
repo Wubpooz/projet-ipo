@@ -6,6 +6,4 @@ public abstract class Case {
 
     abstract boolean estLibre();
 
-
-
 }

@@ -5,6 +5,6 @@ public abstract class Entite {
     Entite(){resistance=0;}
     Entite(int res){resistance=res;}
 
-    abstract String toString(String background);
+    public abstract String toString(String background);
 
 }

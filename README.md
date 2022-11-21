@@ -5,7 +5,7 @@
 - TP10 : not working but displaying (quick prototype).  
 
 
-[`Makefile`](https://github.com/Wubpooz/IPO/blob/main/Makefile) :  
+[Makefile](https://github.com/Wubpooz/IPO/blob/main/Makefile) :  
 `make` : compile all .java files.  
 `make run` : `java Jeu`.  
 `make clean` : remove all .class.  

@@ -44,8 +44,4 @@ public class FenetreJeu extends JPanel {
         frame.repaint();
     }
 
-    public static void main(String[] args) {
-        FenetreJeu j = new FenetreJeu(new Terrain("laby1.txt"));
-    }
-
 }

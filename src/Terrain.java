@@ -55,7 +55,7 @@ public class Terrain {
     public void print(){
         for( Case[] c : carte){
             for(Case e : c){
-                System.out.println(e.toString());
+                System.out.print(e.toString());
             }
         }
     }

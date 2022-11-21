@@ -42,6 +42,7 @@ public class Terrain {
                         case 'm': case '»': case 'w': case '«':
                             cc = new CaseLibre(l, c, new Monstre(Direction.ofChar(ch)));
                             break;
+                        case 'H': cc = new CaseLibre(l,c, new Joueur()); break;
                         default:  cc = null; break;
                     }
                     carte[l][c] = cc;
@@ -61,4 +62,17 @@ public class Terrain {
         }
     }
 
+    public String[][] toPrint(){
+        String[][] strs = new String[hauteur][largeur];
+        for(int i=0; i<hauteur;i++){
+            for(int j=0;j<largeur;j++){
+                strs[i][j] = carte[i][j].toString();
+            }
+        }
+        return strs;
+    }
+
+    public int getHauteur() { return hauteur;}
+
+    public int getLargeur() { return largeur;}
 }

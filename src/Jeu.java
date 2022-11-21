@@ -10,8 +10,17 @@ public class Jeu {
         this.sortis = 0;
     }
 
+
     public static void main(String[] args) {
         Jeu j = new Jeu("laby1.txt");
         j.terrain.print();
+    }
+
+    public void tour() {    // A FAIRE
+        System.out.println("");
+    }
+
+    public boolean partieFinie() {  // A FAIRE
+        return true;
     }
 }

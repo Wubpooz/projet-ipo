@@ -73,6 +73,5 @@ public class Terrain {
     }
 
     public int getHauteur() { return hauteur;}
-
     public int getLargeur() { return largeur;}
 }

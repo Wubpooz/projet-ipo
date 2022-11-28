@@ -1,6 +1,7 @@
 public class Personnage extends EntiteMobile{
 
     Personnage(Direction d){super(d);}
+    Personnage(Direction d,int r){super(d,r);}
 
     @Override
     public String toString(String bg){

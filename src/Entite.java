@@ -8,4 +8,6 @@ public abstract class Entite {
     public abstract String toString(String background);
     public String toString(){return this.toString("   ");}
 
+    public void remove(){}
+
 }

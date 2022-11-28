@@ -4,15 +4,36 @@ public abstract class EntiteMobile extends Entite {
 
     EntiteMobile(Direction dir){d=dir;}
 
+    EntiteMobile(Direction dir, int r){ super(r);d=dir;}
+
     EntiteMobile(){d=Direction.random();}
 
-    public void action(CaseTraversable courante, Case cible){
+    public void changDir(Direction dir){d=dir;}
 
+    public void action(CaseTraversable courante, CaseTraversable cible){
+        Entite ec = courante.getContenu();
+        if(ec instanceof Personnage){
+            if (cible instanceof Sortie){
 
-
-        if(cible.estLibre() && (cible instanceof CaseLibre || cible instanceof CaseTraversable) && (this instanceof Personnage || this instanceof  Monstre)){
-            ((CaseTraversable) cible).vide();
-            ((CaseTraversable) cible).entre(courante.getContenu());
+            } else if (cible.estLibre()) {
+                cible.entre(ec);
+                courante.vide();
+            } else if (cible.getContenu() instanceof Obstacle) {
+                cible.entre(new Obstacle(cible.getContenu().resistance-1));
+            }
+        } else if (ec instanceof Monstre) {
+            if(cible.estLibre()){
+                cible.entre(ec);
+                courante.vide();
+            }else if (cible.getContenu() instanceof Obstacle){
+                cible.entre(new Obstacle(cible.getContenu().resistance-1));
+            } else if ( cible.getContenu() instanceof Personnage) {
+                cible.entre(new Personnage(((Personnage) cible.getContenu()).d,cible.getContenu().resistance-1));
+            }
         }
+        else{
+            ((EntiteMobile) courante.contenu).changDir(Direction.random());
+        }
+
     }
 }

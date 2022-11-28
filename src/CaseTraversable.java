@@ -2,7 +2,7 @@ public class CaseTraversable extends Case{
     protected Entite contenu;
 
 
-    CaseTraversable(int l, int c){super(l,c);}
+    CaseTraversable(int l, int c){super(l,c);contenu = new Obstacle(-1);}
 
     CaseTraversable(int l, int c, Entite e){super(l,c); contenu=e;}
 

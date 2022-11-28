@@ -26,4 +26,6 @@ public class CaseTraversable extends Case{
         }catch(Exception e){throw e;}
     }
 
+    @Override
+    public String toString() {return contenu.toString();}
 }

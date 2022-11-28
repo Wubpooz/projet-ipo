@@ -1,4 +1,4 @@
-public class Joueur extends Entite{
+public class Joueur extends EntiteMobile{
 
     Joueur(){super();}  // A FAIRE
 

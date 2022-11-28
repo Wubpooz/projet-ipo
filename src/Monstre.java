@@ -1,7 +1,6 @@
 public class Monstre extends EntiteMobile{
 
     Monstre(Direction d){super(d);}
-    Monstre(){super();}
     @Override
     public String toString(String bg){
         switch (d) {

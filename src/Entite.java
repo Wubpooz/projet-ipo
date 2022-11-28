@@ -6,6 +6,6 @@ public abstract class Entite {
     Entite(int res){resistance=res;}
 
     public abstract String toString(String background);
-    public String toString(){return this.toString("  ");}
+    public String toString(){return this.toString("   ");}
 
 }

@@ -1,5 +1,5 @@
 public class CaseTraversable extends Case{
-    private Entite contenu;
+    protected Entite contenu;
 
 
     CaseTraversable(int l, int c){super(l,c);}

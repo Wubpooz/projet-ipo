@@ -2,7 +2,7 @@ public abstract class EntiteMobile extends Entite {
 
     protected Direction d;
 
-    EntiteMobile(Direction dir){dir=d;}
+    EntiteMobile(Direction dir){d=dir;}
 
     EntiteMobile(){d=Direction.random();}
 

@@ -10,6 +10,8 @@ public abstract class EntiteMobile extends Entite {
 
     public void changDir(Direction dir){d=dir;}
 
+    public Direction getDir(){return d;}
+
     public void action(CaseTraversable courante, CaseTraversable cible){
         Entite ec = courante.getContenu();
         if(ec instanceof Personnage){

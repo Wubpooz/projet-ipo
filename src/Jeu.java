@@ -16,7 +16,7 @@ public class Jeu {
         j.terrain.print();
     }
 
-    public void tour() {    // A FAIRE
+    public void tour() {
         System.out.println("");
     }
 

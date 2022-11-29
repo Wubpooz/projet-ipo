@@ -19,21 +19,23 @@ public abstract class EntiteMobile extends Entite {
                 cible.entre(ec);
                 courante.vide();
             } else if (cible.getContenu() instanceof Obstacle) {
-                cible.entre(new Obstacle(cible.getContenu().resistance-1));
+                cible.contenu.decRes(1);
             }
         } else if (ec instanceof Monstre) {
             if(cible.estLibre()){
                 cible.entre(ec);
                 courante.vide();
             }else if (cible.getContenu() instanceof Obstacle){
-                cible.entre(new Obstacle(cible.getContenu().resistance-1));
-            } else if ( cible.getContenu() instanceof Personnage) {
-                cible.entre(new Personnage(((Personnage) cible.getContenu()).d,cible.getContenu().resistance-1));
+               cible.contenu.decRes(1);
+            } else if (cible.getContenu() instanceof Personnage) {
+                cible.contenu.decRes(1);
             }
         }
         else{
             ((EntiteMobile) courante.contenu).changDir(Direction.random());
         }
 
+        courante.removeIfDead();
+        cible.removeIfDead();
     }
 }

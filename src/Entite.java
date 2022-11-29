@@ -1,6 +1,6 @@
 public abstract class Entite {
 
-    protected final int resistance;
+    protected int resistance;
 
     Entite(){resistance=0;}
     Entite(int res){resistance=res;}
@@ -8,6 +8,6 @@ public abstract class Entite {
     public abstract String toString(String background);
     public String toString(){return this.toString("   ");}
 
-    public void remove(){}
+    public void decRes(int n){resistance-=n;}
 
 }

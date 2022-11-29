@@ -1,9 +1,9 @@
 TP9
 
 11 :
-- decrement properly an entity's resistance
-- make disapear Personnage or Obstacle with a resistance of 0
-- redo CaseTraversable (around the CaseLibre requirements)
+- decrement properly an entity's resistance ✓
+- redo CaseTraversable (around the CaseLibre requirements) ✓
+- make disapear Personnage or Obstacle with a resistance of 0 ✓
 
 12 :
 Écrire dans la classe Jeu une méthode void tour() qui sélectionne de manière aléatoire une case

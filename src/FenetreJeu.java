@@ -25,11 +25,25 @@ public class FenetreJeu extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(new Color(0, 0, 255, 63));
-        String[][] strs = terrain.toPrint();
-        for(int i=0;i<hauteur;i++){
-            for(int j=0;i<largeur;j++){
-                g.drawString(strs[i][j],100+i*10,100+j*10);
+        Case[][] carte = terrain.getCarte();
+        for (int i=0;i<hauteur;i++){
+            for(int j=0;j<largeur;j++){
+                if(carte[i][j] instanceof CaseIntraversable) {
+                    g.setColor(new Color(242,186,201));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Obstacle) {
+                    g.setColor(new Color(238, 171, 13));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Personnage) {
+                    g.setColor(new Color(184, 238, 155));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Monstre) {
+                    g.setColor(new Color(229, 26, 26));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Joueur) {
+                    g.setColor(new Color(32,170,200));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                }
             }
         }
     }

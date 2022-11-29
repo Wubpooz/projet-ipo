@@ -17,14 +17,14 @@ public abstract class EntiteMobile extends Entite {
         if(ec instanceof Personnage){
             if (cible instanceof Sortie){
 
-            } else if (cible.estLibre()) {
+            } else if (!(cible instanceof CaseIntraversable) && cible.estLibre()) {
                 cible.entre(ec);
                 courante.vide();
             } else if (cible.getContenu() instanceof Obstacle) {
                 cible.contenu.decRes(1);
             }
         } else if (ec instanceof Monstre) {
-            if(cible.estLibre()){
+            if(!(cible instanceof CaseIntraversable) && cible.estLibre()){
                 cible.entre(ec);
                 courante.vide();
             }else if (cible.getContenu() instanceof Obstacle){

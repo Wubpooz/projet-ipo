@@ -19,7 +19,13 @@ public class Jeu {
 
         for(int i=0;i<10;i++) {
             j.tour();
+            j.terrain.print();
         }
+
+        /*
+        while (j.sortis<5){
+            j.tour();
+        }*/
 
     }
 
@@ -46,10 +52,13 @@ public class Jeu {
 
         ((EntiteMobile) e).action((CaseTraversable) cases[i][j], (CaseTraversable) cases[ipr][jpr]);
 
-        this.terrain.print();
+        //this.terrain.print();
     }
 
     public boolean partieFinie() {  // A FAIRE
-        return true;
+        if(sortis>=3){
+            return true;
+        }
+        return false;
     }
 }

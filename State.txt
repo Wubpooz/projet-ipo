@@ -15,4 +15,15 @@ de jeu et affiche le terrain à chaque étape. ✔
 Bonus :
 13. Faire qu’à chaque tour, chaque créature joue exactement une fois.
 14. Arrêter le jeu lorsque tous les personnages sont sauvés ou mangés.
+
 15. Ajouter à volonté d’autres types de cases et d’autres types de créatures.
+
+
+TP10
+
+
+METTRE DES PUTAINS DE GETTER PARTOUT CAR .contenu ça pue et c'est apssé par pointeur de toute façon, pas par copie.
+PROG Behaviour qd JOUEUR/PERSONNAGE SORTIE
+FAIRE partieFin ! qu.14
+
+

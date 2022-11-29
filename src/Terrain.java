@@ -62,16 +62,6 @@ public class Terrain {
         }
     }
 
-    public String[][] toPrint(){
-        String[][] strs = new String[hauteur][largeur];
-        for(int i=0; i<hauteur;i++){
-            for(int j=0;j<largeur;j++){
-                strs[i][j] = carte[i][j].toString();
-            }
-        }
-        return strs;
-    }
-
     public Case[][] getCarte(){return carte;}
     public int getHauteur(){return hauteur;}
     public int getLargeur(){return largeur;}

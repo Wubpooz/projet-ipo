@@ -2,7 +2,7 @@ public abstract class Entite {
 
     protected int resistance;
 
-    Entite(){resistance=0;}
+    Entite(){resistance=3;}
     Entite(int res){resistance=res;}
 
     public abstract String toString(String background);

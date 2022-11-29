@@ -15,8 +15,11 @@ public class Jeu {
 
     public static void main(String[] args) {
         Jeu j = new Jeu("laby1.txt");
-        //j.terrain.print();
+        j.terrain.print();
 
+        for(int i=0;i<10;i++) {
+            j.tour();
+        }
 
     }
 
@@ -34,13 +37,14 @@ public class Jeu {
 
         int ipr = i;
         int jpr = j;
-        switch (((EntiteMobile) e).getDir()) {
-            case nord : ipr=i-1; jpr=j;break;
-            case sud : ipr = i+1; jpr=j;break;
-            case est : ipr=i; jpr=j+1;break;
-            case ouest : ipr=i; jpr=j-1;break;
-        } 
-        ((EntiteMobile) e).action((CaseTraversable)cases[i][j], (CaseTraversable)cases[ipr][jpr]);
+        switch(((EntiteMobile) e).getDir()){
+            case nord : ipr--;break;
+            case sud : ipr++;break;
+            case est : jpr++;break;
+            case ouest : jpr--;break;
+        }
+
+        ((EntiteMobile) e).action((CaseTraversable) cases[i][j], (CaseTraversable) cases[ipr][jpr]);
 
         this.terrain.print();
     }

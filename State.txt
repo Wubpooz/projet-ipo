@@ -25,5 +25,6 @@ TP10
 METTRE DES PUTAINS DE GETTER PARTOUT CAR .contenu ça pue et c'est apssé par pointeur de toute façon, pas par copie.
 PROG Behaviour qd JOUEUR/PERSONNAGE SORTIE
 FAIRE partieFin ! qu.14
+Verifier que des Entites mobiles jump pas sur des cases intraversables où ne se bloquent pas.
 
 

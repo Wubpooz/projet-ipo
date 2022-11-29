@@ -32,10 +32,15 @@ public class Jeu {
             e = ((CaseTraversable) cases[i][j]).getContenu();
         }while(!(e instanceof EntiteMobile));
 
-        switch (((EntiteMobile) e).getDir()){
-            case nord : i--;
-            case sud :
-        }
+        int ipr = i;
+        int jpr = j;
+        switch (((EntiteMobile) e) .getDir()) {
+            case nord : ipr=i-1; jpr=j;break;
+            case sud : ipr = i+1; jpr=j;break;
+            case est : ipr=i; jpr=j+1;break;
+            case ouest : ipr=i; jpr=j-1;break;
+        } 
+        ((EntiteMobile) e) .action( (CaseTraversable) cases [i] [j], (CaseTraversable) cases [ipr] [jpr]);
 
         this.terrain.print();
     }

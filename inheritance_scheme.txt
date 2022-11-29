@@ -1,0 +1,21 @@
+
+
+Classes inheritance :
+
+Case <- CaseTraversable [Entite]
+               ^
+     CaseLibre | CaseIntraversable | Sortie
+
+
+Entite <- EntiteMobile [Direction]
+   ^           ^
+Obstacle   Monstre | Personnage | Joueur
+
+
+
+Classes instances (+ the [ ]) :
+
+Terrain -> Jeu
+
+Terrain -> FenetreJeu
+Jeu & FenetreJeu -> Donjon

@@ -17,7 +17,7 @@ public class Terrain {
          'o' pour une sortie
          '@' pour une case libre contenant un obstacle
          '^', 'v', '>', '<' pour une case libre contenant un personnage
-         'm', 'w', '»', '«' pour une case libre contenant un monstre
+         'm', 'w','»', '«' pour une case libre contenant un monstre
     */
     public Terrain(String file) {
         try {
@@ -72,6 +72,7 @@ public class Terrain {
         return strs;
     }
 
-    public int getHauteur() { return hauteur;}
-    public int getLargeur() { return largeur;}
+    public Case[][] getCarte(){return carte;}
+    public int getHauteur(){return hauteur;}
+    public int getLargeur(){return largeur;}
 }

@@ -1,29 +1,22 @@
 public class CaseTraversable extends Case{
-    private Entite contenu;
+    protected Entite contenu;
 
 
-    CaseTraversable(int l, int c){super(l,c);}
+    CaseTraversable(int l, int c){super(l,c); contenu = null;}
 
     CaseTraversable(int l, int c, Entite e){super(l,c); contenu=e;}
 
 
     public Entite getContenu(){ return contenu;}
 
-    public void vide(){contenu = new Obstacle(-1);}
+    public void vide(){contenu = null;}
 
-    public void entre(Entite e){
-        try{
-            if(contenu.resistance==-1){contenu = e;}
-        }catch(Exception exp){throw exp;}
-    }
+    public void entre(Entite e){contenu=e;}
 
-    public boolean estLibre(){
-        try {
-            if (contenu.resistance==-1) {
-                return true;
-            }
-            return false;
-        }catch(Exception e){throw e;}
-    }
+    public boolean estLibre(){return contenu==null;}
 
+    public void removeIfDead(){if(contenu.resistance==0){contenu=null;}}
+
+    @Override
+    public String toString() {return contenu.toString();}
 }

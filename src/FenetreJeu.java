@@ -19,6 +19,7 @@ public class FenetreJeu extends JPanel implements KeyListener {
 
         JFrame frame = new JFrame("Donjon");
         this.frame = frame;
+        frame.addKeyListener(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.pack();

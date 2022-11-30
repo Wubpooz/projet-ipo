@@ -6,7 +6,7 @@ public class Joueur extends Entite{
     public String toString(String background) {return background.charAt(0)+"H"+background.charAt(2);}
 
     public void avance(CaseTraversable courante, Case cible){
-        if (!(cible instanceof CaseIntraversable) && cible.estLibre()) {
+        if (!(cible instanceof CaseIntraversable) && cible.estLibre()){
             ((CaseTraversable) cible).entre(courante.getContenu());
             courante.vide();
         }

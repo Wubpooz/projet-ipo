@@ -35,11 +35,10 @@ public abstract class EntiteMobile extends Entite {
                 cible.getContenu().decRes(1);
             }
         }
-        else{
+        if ((ec instanceof Monstre || ec instanceof Personnage) && (cible instanceof CaseIntraversable)){
             ((EntiteMobile) courante.getContenu()).changDir(Direction.random());
         }
 
-        courante.removeIfDead();
-        cible.removeIfDead();
+
     }
 }

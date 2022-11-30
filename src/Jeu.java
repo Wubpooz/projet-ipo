@@ -53,14 +53,26 @@ public class Jeu {
             case ouest : jpr--;break;
         }
 
+
+        ((EntiteMobile) e).action((CaseTraversable) cases[i][j], (CaseTraversable) cases[ipr][jpr]);
+
         if(((CaseTraversable) cases[i][j]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]) instanceof Sortie){sortis++;}
         if(((CaseTraversable) cases[i][j]).getContenu() instanceof Monstre && ((CaseTraversable) cases[ipr][jpr]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]).getContenu().getResistance()==0){dead++;}
+
+        for(int k=0;k<terrain.getHauteur();k++){
+            for(int m=0;m<terrain.getLargeur();m++){
+                if(cases[k][m] instanceof CaseTraversable &&( ((CaseTraversable) cases[k][m]).getContenu() instanceof Joueur)){
+                    if(((Joueur) ((CaseTraversable) cases[k][m]).getContenu()).getResistance()==0){terrain.joueur=0;}
+                }
+            }
+        }
+
 
         if(terrain.joueur==0){sortis+=1;}
         if(terrain.joueur==-1){sortis/=2;}
 
-
-        ((EntiteMobile) e).action((CaseTraversable) cases[i][j], (CaseTraversable) cases[ipr][jpr]);
+        ((CaseTraversable) cases[i][j]).removeIfDead();
+        ((CaseTraversable) cases[ipr][jpr]).removeIfDead();
 
         //this.terrain.print();
     }

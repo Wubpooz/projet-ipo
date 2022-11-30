@@ -49,7 +49,7 @@ public class FenetreJeu extends JPanel implements KeyListener {
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Joueur) {
                     g.setColor(new Color(32,170,200));
                     g.fillRect(j*24, i * 24, 24, 24);
-                    terrain.joueurStatut(false, ((CaseTraversable)carte[i][j]).getContenu().getResistance());       // tue le joueur si il a pris trop de dégats
+                    terrain.joueurStatut(false, ((CaseTraversable)carte[i][j]).getContenu().getResistance()); // tue le joueur si il a pris trop de dégats
                 }
             }
         }
@@ -65,8 +65,6 @@ public class FenetreJeu extends JPanel implements KeyListener {
         frame.repaint();
     }
 
-    @Override
-    public void keyTyped(KeyEvent key) { }
 
     @Override
     public void keyPressed(KeyEvent key) {
@@ -87,6 +85,8 @@ public class FenetreJeu extends JPanel implements KeyListener {
         }
     }
 
+    @Override
+    public void keyTyped(KeyEvent key) { }
     @Override
     public void keyReleased(KeyEvent key) { }
 }

@@ -55,6 +55,7 @@ public class Jeu {
         //this.terrain.print();
     }
 
+
     public boolean partieFinie() {  // A FAIRE
         if(sortis>=3){
             return true;

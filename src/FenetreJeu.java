@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class FenetreJeu extends JPanel {
+public class FenetreJeu extends JPanel implements KeyListener {
     private Terrain terrain;
     private int tailleCase = 24;
     private int hauteur, largeur;
@@ -58,4 +60,28 @@ public class FenetreJeu extends JPanel {
         frame.repaint();
     }
 
+    @Override
+    public void keyTyped(KeyEvent key) { }
+
+    @Override
+    public void keyPressed(KeyEvent key) {
+        Case[][] carte = terrain.getCarte();
+        for (int i=0;i<hauteur;i++){
+            for(int j=0;j<largeur;j++){
+                if(carte[i][j] instanceof CaseLibre &&( ((CaseLibre) carte[i][j]).getContenu() instanceof Joueur)){
+                    Joueur Jou = (Joueur) ((CaseLibre) carte[i][j]).getContenu();
+                    switch (key.getKeyCode()){
+                        case 37 : Jou.avance("left");break;
+                        case 38 : Jou.avance("up");break;
+                        case 39 : Jou.avance("right");break;
+                        case 40 : Jou.avance("down");break;
+                        case 49 : Jou.avance("sortie");break;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent key) { }
 }

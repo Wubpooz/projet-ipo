@@ -5,7 +5,7 @@ public class CaseLibre extends CaseTraversable{
 
 
     public String toString() {
-        if (contenu==null){
+        if (this.getContenu()==null){
             return "   ";
         }
         else{

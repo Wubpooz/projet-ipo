@@ -2,7 +2,7 @@
 
 ## Current state
 - TP9 : working completly up to the bonus questions.
-- TP10 : not working but displaying (quick prototype).
+- TP10 : fully working but still some bugs around player's movements.
 
 [Makefile](https://https://gitlab.dsi.universite-paris-saclay.fr/mathieu.waharte/projet-ipo/-/blob/master/Makefile) :    
 `make` : compile all .java files.  

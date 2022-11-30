@@ -16,7 +16,7 @@ public abstract class EntiteMobile extends Entite {
         Entite ec = courante.getContenu();
         if(ec instanceof Personnage){
             if (cible instanceof Sortie){
-                courante.vide(); //////----------------------------------
+                courante.vide();
             } else if (!(cible instanceof CaseIntraversable) && cible.estLibre()) {
                 cible.entre(ec);
                 courante.vide();
@@ -30,6 +30,8 @@ public abstract class EntiteMobile extends Entite {
             }else if (cible.getContenu() instanceof Obstacle){
                cible.getContenu().decRes(1);
             } else if (cible.getContenu() instanceof Personnage) {
+                cible.getContenu().decRes(1);
+            } else if (cible.getContenu() instanceof Joueur) {
                 cible.getContenu().decRes(1);
             }
         }

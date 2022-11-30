@@ -10,4 +10,6 @@ public abstract class Entite {
 
     public void decRes(int n){resistance-=n;}
 
+    public int getResistance(){return resistance;}
+
 }

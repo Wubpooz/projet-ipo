@@ -8,14 +8,13 @@ Case <- CaseTraversable [Entite]
 
 
 Entite <- EntiteMobile [Direction]
-   ^           ^
-Obstacle   Monstre | Personnage | Joueur
+   ^                 ^
+Obstacle | Joueur   Monstre | Personnage
 
 
 
 Classes instances (+ the [ ]) :
 
 Terrain -> Jeu
-
 Terrain -> FenetreJeu
 Jeu & FenetreJeu -> Donjon

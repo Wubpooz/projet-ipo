@@ -5,11 +5,14 @@ public class Jeu {
     Terrain terrain;
     int sortis;
 
+    int dead;
+
     /* Initialisation d'un jeu avec le terrain initial décrit dans
        le fichier [f] donné en paramètre */
     public Jeu(String f) {
         this.terrain = new Terrain(f);
         this.sortis = 0;
+        this.dead=0;
     }
 
 
@@ -50,16 +53,18 @@ public class Jeu {
             case ouest : jpr--;break;
         }
 
+        if(((CaseTraversable) cases[i][j]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]) instanceof Sortie){sortis++;}
+        if(((CaseTraversable) cases[i][j]).getContenu() instanceof Monstre && ((CaseTraversable) cases[ipr][jpr]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]).getContenu().getResistance()==0){dead++;}
+
+        if(terrain.joueur==0){sortis+=1;}
+        if(terrain.joueur==-1){sortis/=2;}
+
+
         ((EntiteMobile) e).action((CaseTraversable) cases[i][j], (CaseTraversable) cases[ipr][jpr]);
 
         //this.terrain.print();
     }
 
 
-    public boolean partieFinie() {  // A FAIRE
-        if(sortis>=3){
-            return true;
-        }
-        return false;
-    }
+    public boolean partieFinie() {return sortis+dead>=3 || terrain.joueur==0 || terrain.joueur==-1;}
 }

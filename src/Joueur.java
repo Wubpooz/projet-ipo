@@ -1,21 +1,24 @@
 public class Joueur extends Entite{
 
-    private Direction dir;
-    Joueur(){super(3);dir=Direction.random();}
+    Joueur(){super(3);}
 
-    //public void chgDir(Direction d){dir=d;}
-    //public Direction getDir(){return dir;}
     @Override
     public String toString(String background) {return background.charAt(0)+"H"+background.charAt(2);}
 
-    public void avance(String d){
-        switch (d){
-            case "up":System.out.println("up");break;
-            case "down":System.out.println("down");break;
-            case "right":System.out.println("right");break;
-            case "left":System.out.println("left");break;
-            case "sortie":System.out.println("sortie");break;
+    public void avance(CaseTraversable courante, Case cible){
+        if (!(cible instanceof CaseIntraversable) && cible.estLibre()) {
+            ((CaseTraversable) cible).entre(courante.getContenu());
+            courante.vide();
         }
+
+    }
+
+    public boolean sors(CaseTraversable courante){ //j'ai pensé à la faire return 1 si on est sur la sortie mais c'est chiant pour le faire parvenir à la classe Jeu.  * en fait je vais le faire comme ça en apssant par terrain lol
+        if(courante instanceof Sortie){
+            courante.vide();
+            return true;
+        }
+        return false;
     }
 
 }

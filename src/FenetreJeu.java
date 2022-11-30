@@ -36,6 +36,9 @@ public class FenetreJeu extends JPanel implements KeyListener {
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Obstacle) {
                     g.setColor(new Color(238, 171, 13));
                     g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]) instanceof Sortie) {
+                    g.setColor(new Color(223, 13, 238));
+                    g.fillRect(j*24, i * 24, 24, 24);
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Personnage) {
                     g.setColor(new Color(184, 238, 155));
                     g.fillRect(j*24, i * 24, 24, 24);
@@ -45,6 +48,7 @@ public class FenetreJeu extends JPanel implements KeyListener {
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Joueur) {
                     g.setColor(new Color(32,170,200));
                     g.fillRect(j*24, i * 24, 24, 24);
+                    terrain.joueurStatut(false, ((CaseTraversable)carte[i][j]).getContenu().getResistance());       // tue le joueur si il a pris trop de dégats
                 }
             }
         }
@@ -68,14 +72,14 @@ public class FenetreJeu extends JPanel implements KeyListener {
         Case[][] carte = terrain.getCarte();
         for (int i=0;i<hauteur;i++){
             for(int j=0;j<largeur;j++){
-                if(carte[i][j] instanceof CaseLibre &&( ((CaseLibre) carte[i][j]).getContenu() instanceof Joueur)){
-                    Joueur Jou = (Joueur) ((CaseLibre) carte[i][j]).getContenu();
+                if(carte[i][j] instanceof CaseTraversable &&( ((CaseTraversable) carte[i][j]).getContenu() instanceof Joueur)){
+                    Joueur Jou = (Joueur) ((CaseTraversable) carte[i][j]).getContenu();
                     switch (key.getKeyCode()){
-                        case 37 : Jou.avance("left");break;
-                        case 38 : Jou.avance("up");break;
-                        case 39 : Jou.avance("right");break;
-                        case 40 : Jou.avance("down");break;
-                        case 49 : Jou.avance("sortie");break;
+                        case 37 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j-1]);break;
+                        case 38 : Jou.avance((CaseTraversable) carte[i][j], carte[i-1][j]);break;
+                        case 39 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j+1]);break;
+                        case 40 : Jou.avance((CaseTraversable) carte[i][j], carte[i+1][j]);break;
+                        case 49 : terrain.joueurStatut(Jou.sors((CaseTraversable) carte[i][j]),Jou.getResistance());break;  //sors le joueur si il est pas mort d'abord
                     }
                 }
             }

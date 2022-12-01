@@ -7,6 +7,8 @@ public class Terrain {
     private int hauteur, largeur;
     private Case[][] carte;
 
+    public int joueur;
+
     /* Initialisation d'un terrain à partir de la description donnée par
        un fichier texte. Format du fichier de description :
        - hauteur et largeur sur la première ligne
@@ -42,7 +44,7 @@ public class Terrain {
                         case 'm': case '»': case 'w': case '«':
                             cc = new CaseLibre(l, c, new Monstre(Direction.ofChar(ch)));
                             break;
-                        case 'H': cc = new CaseLibre(l,c, new Joueur()); break;
+                        case 'H': cc = new CaseLibre(l,c, new Joueur());joueur=1; break;
                         default:  cc = null; break;
                     }
                     carte[l][c] = cc;
@@ -62,17 +64,12 @@ public class Terrain {
         }
     }
 
-    public String[][] toPrint(){
-        String[][] strs = new String[hauteur][largeur];
-        for(int i=0; i<hauteur;i++){
-            for(int j=0;j<largeur;j++){
-                strs[i][j] = carte[i][j].toString();
-            }
-        }
-        return strs;
-    }
-
     public Case[][] getCarte(){return carte;}
     public int getHauteur(){return hauteur;}
     public int getLargeur(){return largeur;}
+
+    public void joueurStatut(boolean s,int res){
+        if (res<=0) {joueur=-1;}
+        else if(s){joueur=0;}
+    }
 }

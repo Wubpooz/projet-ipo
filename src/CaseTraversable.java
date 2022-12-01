@@ -15,7 +15,8 @@ public class CaseTraversable extends Case{
 
     public boolean estLibre(){return contenu==null;}
 
-    public void removeIfDead(){if(contenu.resistance==0){contenu=null;}}
+    public void removeIfDead(){if(contenu!=null && contenu.resistance==0){contenu=null;}}
+    // no error 'cause stops after the first condition in an && if it isn't verified
 
     @Override
     public String toString() {return contenu.toString();}

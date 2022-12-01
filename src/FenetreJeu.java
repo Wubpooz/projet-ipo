@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class FenetreJeu extends JPanel {
+public class FenetreJeu extends JPanel implements KeyListener {
     private Terrain terrain;
     private int tailleCase = 24;
     private int hauteur, largeur;
@@ -17,6 +19,7 @@ public class FenetreJeu extends JPanel {
 
         JFrame frame = new JFrame("Donjon");
         this.frame = frame;
+        frame.addKeyListener(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(this);
         frame.pack();
@@ -25,11 +28,29 @@ public class FenetreJeu extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(new Color(0, 0, 255, 63));
-        String[][] strs = terrain.toPrint();
-        for(int i=0;i<hauteur;i++){
-            for(int j=0;i<largeur;j++){
-                g.drawString(strs[i][j],100+i*10,100+j*10);
+        Case[][] carte = terrain.getCarte();
+        for (int i=0;i<hauteur;i++){
+            for(int j=0;j<largeur;j++){
+                if(carte[i][j] instanceof CaseIntraversable) {
+                    g.setColor(new Color(242,186,201));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Obstacle) {
+                    g.setColor(new Color(238, 171, 13));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]) instanceof Sortie) {
+                    g.setColor(new Color(223, 13, 238));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Personnage) {
+                    g.setColor(new Color(184, 238, 155));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Monstre) {
+                    g.setColor(new Color(229, 26, 26));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Joueur) {
+                    g.setColor(new Color(32,170,200));
+                    g.fillRect(j*24, i * 24, 24, 24);
+                    terrain.joueurStatut(false, ((CaseTraversable)carte[i][j]).getContenu().getResistance()); // tue le joueur si il a pris trop de dégats
+                }
             }
         }
     }
@@ -44,4 +65,28 @@ public class FenetreJeu extends JPanel {
         frame.repaint();
     }
 
+
+    @Override
+    public void keyPressed(KeyEvent key) {
+        Case[][] carte = terrain.getCarte();
+        for (int i=0;i<hauteur;i++){
+            for(int j=0;j<largeur;j++){
+                if(carte[i][j] instanceof CaseTraversable &&( ((CaseTraversable) carte[i][j]).getContenu() instanceof Joueur)){
+                    Joueur Jou = (Joueur) ((CaseTraversable) carte[i][j]).getContenu();
+                    switch (key.getKeyCode()){
+                        case 37 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j-1]);break;
+                        case 38 : Jou.avance((CaseTraversable) carte[i][j], carte[i-1][j]);break;
+                        case 39 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j+1]);break;
+                        case 40 : Jou.avance((CaseTraversable) carte[i][j], carte[i+1][j]);break;
+                        case 49 : terrain.joueurStatut(Jou.sors((CaseTraversable) carte[i][j]),Jou.getResistance());break;  //sors le joueur si il est pas mort d'abord
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent key) { }
+    @Override
+    public void keyReleased(KeyEvent key) { }
 }

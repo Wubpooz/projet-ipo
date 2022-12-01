@@ -8,7 +8,7 @@ public class Donjon {
         Timer timer = new Timer(tempo, e -> {
             jeu.tour();
             graphic.repaint();
-            if (jeu.partieFinie()) { graphic.ecranFinal(jeu.sortis); }
+            if (jeu.partieFinie()) {graphic.ecranFinal(jeu.sortis); }
         });
         timer.setInitialDelay(0);
         timer.start();

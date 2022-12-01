@@ -1,18 +1,31 @@
 TP9
 
 11 :
-- decrement properly an entity's resistance ✓
-- redo CaseTraversable (around the CaseLibre requirements) ✓
-- make disapear Personnage or Obstacle with a resistance of 0 ✓
+- decrement properly an entity's resistance ✔
+- redo CaseTraversable (around the CaseLibre requirements) ✔
+- make disapear Personnage or Obstacle with a resistance of 0 ✔
 
 12 :
 Écrire dans la classe Jeu une méthode void tour() qui sélectionne de manière aléatoire une case
 contenant une créature et fait agir cette créature. Ajouter une méthode main qui enchaîne les tours
-de jeu et affiche le terrain à chaque étape.
+de jeu et affiche le terrain à chaque étape. ✔
 
 
 
 Bonus :
 13. Faire qu’à chaque tour, chaque créature joue exactement une fois.
 14. Arrêter le jeu lorsque tous les personnages sont sauvés ou mangés.
+
 15. Ajouter à volonté d’autres types de cases et d’autres types de créatures.
+
+
+TP10
+
+- METTRE DES PUTAINS DE GETTER PARTOUT CAR .contenu ça pue et c'est apssé par pointeur de toute façon, pas par copie. ✔
+- PROG Behaviour qd JOUEUR/PERSONNAGE SORTIE ✔
+- FAIRE partieFin ! qu.14 ✔
+
+- Joueur jumping to side somtimes when arrow pressed
+- game not stopping when dead, because joueur==1 tjrs vrai, pk ?    car resistance tjrs >=1 car qd ==0 c'est dégagé ? ✔  -> solution pas du tout élégante, à refaire + sortie fct pas
+- EntiteMobiles not changing directions randomly, why ?  ✔
+- afficher vie

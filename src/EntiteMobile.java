@@ -16,28 +16,29 @@ public abstract class EntiteMobile extends Entite {
         Entite ec = courante.getContenu();
         if(ec instanceof Personnage){
             if (cible instanceof Sortie){
-
-            } else if (cible.estLibre()) {
+                courante.vide();
+            } else if (!(cible instanceof CaseIntraversable) && cible.estLibre()) {
                 cible.entre(ec);
                 courante.vide();
             } else if (cible.getContenu() instanceof Obstacle) {
-                cible.contenu.decRes(1);
+                cible.getContenu().decRes(1);
             }
         } else if (ec instanceof Monstre) {
-            if(cible.estLibre()){
+            if(!(cible instanceof CaseIntraversable) && cible.estLibre()){
                 cible.entre(ec);
                 courante.vide();
             }else if (cible.getContenu() instanceof Obstacle){
-               cible.contenu.decRes(1);
+               cible.getContenu().decRes(1);
             } else if (cible.getContenu() instanceof Personnage) {
-                cible.contenu.decRes(1);
+                cible.getContenu().decRes(1);
+            } else if (cible.getContenu() instanceof Joueur) {
+                cible.getContenu().decRes(1);
             }
         }
-        else{
-            ((EntiteMobile) courante.contenu).changDir(Direction.random());
+        if ((ec instanceof Monstre || ec instanceof Personnage) && (cible instanceof CaseIntraversable)){
+            ((EntiteMobile) courante.getContenu()).changDir(Direction.random());
         }
 
-        courante.removeIfDead();
-        cible.removeIfDead();
+
     }
 }

@@ -6,9 +6,11 @@ public class Donjon {
         Jeu jeu = new Jeu("laby2.txt");
         FenetreJeu graphic = new FenetreJeu(jeu.terrain);
         Timer timer = new Timer(tempo, e -> {
-            jeu.tour();
-            graphic.repaint();
             if (jeu.partieFinie()) {graphic.ecranFinal(jeu.sortis); }
+            else{
+                jeu.tour();
+                graphic.repaint();
+            }
         });
         timer.setInitialDelay(0);
         timer.start();

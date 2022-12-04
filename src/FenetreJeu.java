@@ -9,6 +9,8 @@ public class FenetreJeu extends JPanel implements KeyListener {
     private int hauteur, largeur;
     private JFrame frame;
 
+    private int viej=0;
+
     public FenetreJeu(Terrain t) {
         this.hauteur = t.getHauteur();
         this.largeur = t.getLargeur();
@@ -21,9 +23,14 @@ public class FenetreJeu extends JPanel implements KeyListener {
         this.frame = frame;
         frame.addKeyListener(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.getContentPane().add(this);
+
         frame.pack();
         frame.setVisible(true);
+
+
+
     }
 
     public void paintComponent(Graphics g) {
@@ -49,10 +56,16 @@ public class FenetreJeu extends JPanel implements KeyListener {
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Joueur) {
                     g.setColor(new Color(32,170,200));
                     g.fillRect(j*24, i * 24, 24, 24);
+                    viej = ((CaseTraversable)carte[i][j]).getContenu().getResistance();
                     terrain.joueurStatut(false, ((CaseTraversable)carte[i][j]).getContenu().getResistance()); // tue le joueur si il a pris trop de dégats
                 }
             }
         }
+
+        g.setFont(new Font("Verdana", 1, 20));
+        g.setColor(Color.RED);
+        g.drawString("❤️".repeat(viej),27,18);
+
     }
 
     public void ecranFinal(int n) {
@@ -73,13 +86,16 @@ public class FenetreJeu extends JPanel implements KeyListener {
             for(int j=0;j<largeur;j++){
                 if(carte[i][j] instanceof CaseTraversable &&( ((CaseTraversable) carte[i][j]).getContenu() instanceof Joueur)){
                     Joueur Jou = (Joueur) ((CaseTraversable) carte[i][j]).getContenu();
+
                     switch (key.getKeyCode()){
-                        case 37 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j-1]);break;
-                        case 38 : Jou.avance((CaseTraversable) carte[i][j], carte[i-1][j]);break;
-                        case 39 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j+1]);break;       //jump au max possible dans ce cas et le suivant ???
-                        case 40 : Jou.avance((CaseTraversable) carte[i][j], carte[i+1][j]);break;
-                        case 49 : terrain.joueurStatut(Jou.sors((CaseTraversable) carte[i][j]),Jou.getResistance());break;  //sors le joueur si il est pas mort d'abord
+                        case KeyEvent.VK_LEFT : Jou.avance((CaseTraversable) carte[i][j], carte[i][j-1]);break;
+                        case KeyEvent.VK_UP : Jou.avance((CaseTraversable) carte[i][j], carte[i-1][j]);break;
+                        case KeyEvent.VK_RIGHT: Jou.avance((CaseTraversable) carte[i][j],carte[i][j+1]);break;
+                        case KeyEvent.VK_DOWN: Jou.avance((CaseTraversable) carte[i][j],carte[i+1][j]);break;
+                        case KeyEvent.VK_SPACE : terrain.joueurStatut(Jou.sors((CaseTraversable) carte[i][j]),Jou.getResistance());break;  //sors le joueur si il est pas mort d'abord
                     }
+                    i=hauteur;
+                    j=largeur;
                 }
             }
         }

@@ -27,6 +27,8 @@ public class Terrain {
             this.hauteur = sc.nextInt();
             this.largeur = sc.nextInt();
             sc.nextLine();
+            int resistanceJoueur=sc.nextInt();
+            sc.nextLine();
             this.carte = new Case[hauteur][largeur];
             for (int l=0; l<hauteur; l++) {
                 String line = sc.nextLine();
@@ -44,7 +46,7 @@ public class Terrain {
                         case 'm': case '»': case 'w': case '«':
                             cc = new CaseLibre(l, c, new Monstre(Direction.ofChar(ch)));
                             break;
-                        case 'H': cc = new CaseLibre(l,c, new Joueur());joueur=1; break;
+                        case 'H': cc = new CaseLibre(l,c, new Joueur(resistanceJoueur));joueur=1; break;
                         default:  cc = null; break;
                     }
                     carte[l][c] = cc;

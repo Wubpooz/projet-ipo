@@ -76,7 +76,7 @@ public class FenetreJeu extends JPanel implements KeyListener {
                     switch (key.getKeyCode()){
                         case 37 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j-1]);break;
                         case 38 : Jou.avance((CaseTraversable) carte[i][j], carte[i-1][j]);break;
-                        case 39 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j+1]);break;
+                        case 39 : Jou.avance((CaseTraversable) carte[i][j], carte[i][j+1]);break;       //jump au max possible dans ce cas et le suivant ???
                         case 40 : Jou.avance((CaseTraversable) carte[i][j], carte[i+1][j]);break;
                         case 49 : terrain.joueurStatut(Jou.sors((CaseTraversable) carte[i][j]),Jou.getResistance());break;  //sors le joueur si il est pas mort d'abord
                     }

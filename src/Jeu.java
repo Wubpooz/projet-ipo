@@ -54,9 +54,11 @@ public class Jeu {
         }
 
 
+        if(((CaseTraversable) cases[i][j]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]) instanceof Sortie){sortis++;}
+
         ((EntiteMobile) e).action((CaseTraversable) cases[i][j], (CaseTraversable) cases[ipr][jpr]);
 
-        if(((CaseTraversable) cases[i][j]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]) instanceof Sortie){sortis++;}
+
         if(((CaseTraversable) cases[i][j]).getContenu() instanceof Monstre && ((CaseTraversable) cases[ipr][jpr]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]).getContenu().getResistance()==0){dead++;}
 
         for(int k=0;k<terrain.getHauteur();k++){

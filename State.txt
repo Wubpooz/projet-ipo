@@ -13,9 +13,8 @@ de jeu et affiche le terrain à chaque étape. ✔
 
 
 Bonus :
-13. Faire qu’à chaque tour, chaque créature joue exactement une fois.
-14. Arrêter le jeu lorsque tous les personnages sont sauvés ou mangés.
-
+13. Faire qu’à chaque tour, chaque créature joue exactement une fois. ✔
+14. Arrêter le jeu lorsque tous les personnages sont sauvés ou mangés. ✔
 15. Ajouter à volonté d’autres types de cases et d’autres types de créatures.
 
 
@@ -25,7 +24,7 @@ TP10
 - PROG Behaviour qd JOUEUR/PERSONNAGE SORTIE ✔
 - FAIRE partieFin ! qu.14 ✔
 
-- Joueur jumping to side somtimes when arrow pressed
+- Joueur jumping to side somtimes when arrow pressed ✔
 - game not stopping when dead, because joueur==1 tjrs vrai, pk ?    car resistance tjrs >=1 car qd ==0 c'est dégagé ? ✔  -> solution pas du tout élégante, à refaire + sortie fct pas ✔
 - EntiteMobiles not changing directions randomly, why ?  ✔
 - affiche score ✔

@@ -42,7 +42,7 @@ public class Jeu {
             i = rnd.nextInt(terrain.getHauteur());
             j = rnd.nextInt(terrain.getLargeur());
             e = ((CaseTraversable) cases[i][j]).getContenu();
-        }while(!(e instanceof EntiteMobile));
+        }while(!(e instanceof EntiteMobile) || !((EntiteMobile) e).peutJouer());
 
         int ipr = i;
         int jpr = j;

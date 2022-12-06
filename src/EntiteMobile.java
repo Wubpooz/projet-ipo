@@ -2,6 +2,8 @@ public abstract class EntiteMobile extends Entite {
 
     protected Direction d;
 
+    private boolean joué=false;
+
     EntiteMobile(Direction dir){d=dir;}
 
     EntiteMobile(Direction dir, int r){ super(r);d=dir;}
@@ -11,6 +13,12 @@ public abstract class EntiteMobile extends Entite {
     public void changDir(Direction dir){d=dir;}
 
     public Direction getDir(){return d;}
+
+
+    public boolean peutJouer(){
+        joué=!(joué);
+        return !(joué);
+    }
 
     public void action(CaseTraversable courante, CaseTraversable cible){
         Entite ec = courante.getContenu();

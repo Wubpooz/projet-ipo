@@ -8,10 +8,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class FenetreJeu extends JPanel implements KeyListener {
-    private Terrain terrain;
-    private int tailleCase = 24;
-    private int hauteur, largeur;
-    private JFrame frame;
+    private final Terrain terrain;
+    private final int tailleCase = 24;
+    private final int hauteur, largeur;
+    private final JFrame frame;
 
     private final BufferedImage door;
     private final BufferedImage wall;
@@ -128,7 +128,7 @@ public class FenetreJeu extends JPanel implements KeyListener {
                             ((CaseTraversable) carte[i][j+1]).removeIfDead();break;
                         case KeyEvent.VK_S: terrain.nbmonsters-=Jou.damage(carte[i+1][j]);
                             ((CaseTraversable) carte[i+1][j]).removeIfDead();break;
-                    }System.out.println("nb monsters : "+terrain.nbmonsters);
+                    }
                     i=hauteur;
                     j=largeur;
                 }

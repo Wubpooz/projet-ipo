@@ -25,7 +25,6 @@ public class Joueur extends Entite{
         if (!(cible instanceof CaseIntraversable) && !cible.estLibre() && ((CaseTraversable) cible).getContenu() instanceof Monstre) {
             ((CaseTraversable) cible).getContenu().decRes(1);
             if(((CaseTraversable) cible).getContenu().getResistance()<=0){return 1;}    // 1 = one less monster, if all are killed you win also
-            System.out.println("resistance : "+((CaseTraversable) cible).getContenu().getResistance());
         }
         return 0;
     }

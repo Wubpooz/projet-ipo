@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Jeu {
 
-    Terrain terrain;
+    final Terrain terrain;
     int sortis;
 
     int dead;

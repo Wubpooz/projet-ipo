@@ -9,6 +9,8 @@ public class Terrain {
 
     public int joueur;
 
+    public int nbmonsters;
+
     /* Initialisation d'un terrain à partir de la description donnée par
        un fichier texte. Format du fichier de description :
        - hauteur et largeur sur la première ligne
@@ -29,6 +31,7 @@ public class Terrain {
             sc.nextLine();
             int resistanceJoueur=sc.nextInt();
             sc.nextLine();
+            this.nbmonsters=0;
             this.carte = new Case[hauteur][largeur];
             for (int l=0; l<hauteur; l++) {
                 String line = sc.nextLine();
@@ -44,7 +47,7 @@ public class Terrain {
                             cc = new CaseLibre(l, c, new Personnage(Direction.ofChar(ch)));
                             break;
                         case 'm': case '»': case 'w': case '«':
-                            cc = new CaseLibre(l, c, new Monstre(Direction.ofChar(ch)));
+                            cc = new CaseLibre(l, c, new Monstre(Direction.ofChar(ch)));nbmonsters+=1;
                             break;
                         case 'H': cc = new CaseLibre(l,c, new Joueur(resistanceJoueur));joueur=1; break;
                         default:  cc = null; break;

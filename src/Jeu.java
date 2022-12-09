@@ -72,6 +72,7 @@ public class Jeu {
 
         if(terrain.joueur==0){sortis+=1;}
         if(terrain.joueur==-1){sortis/=2;}
+        if (terrain.nbmonsters==0){sortis += (sortis==0 ? 1 : sortis);}       // when you kill all monsters, you get a score of one at least or double
 
         ((CaseTraversable) cases[i][j]).removeIfDead();
         ((CaseTraversable) cases[ipr][jpr]).removeIfDead();
@@ -80,5 +81,5 @@ public class Jeu {
     }
 
 
-    public boolean partieFinie() {return sortis+dead>=3 || terrain.joueur==0 || terrain.joueur==-1;}
+    public boolean partieFinie() {return sortis+dead>=3 || terrain.joueur==0 || terrain.joueur==-1 || terrain.nbmonsters==0;}
 }

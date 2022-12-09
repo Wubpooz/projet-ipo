@@ -120,11 +120,15 @@ public class FenetreJeu extends JPanel implements KeyListener {
                         case KeyEvent.VK_RIGHT: Jou.avance((CaseTraversable) carte[i][j],carte[i][j+1]);break;
                         case KeyEvent.VK_DOWN: Jou.avance((CaseTraversable) carte[i][j],carte[i+1][j]);break;
                         case KeyEvent.VK_SPACE : terrain.joueurStatut(Jou.sors((CaseTraversable) carte[i][j]),Jou.getResistance());break;  //sors le joueur si il est pas mort d'abord
-                        case KeyEvent.VK_Q : Jou.damage(carte[i][j-1]);break;       //allow player to damage monsters
-                        case KeyEvent.VK_Z : Jou.damage(carte[i-1][j]);break;
-                        case KeyEvent.VK_D: Jou.damage(carte[i][j+1]);break;
-                        case KeyEvent.VK_S: Jou.damage(carte[i+1][j]);break;
-                    }
+                        case KeyEvent.VK_Q : terrain.nbmonsters-=Jou.damage(carte[i][j-1]);
+                            ((CaseTraversable) carte[i][j-1]).removeIfDead();break;       //allow player to damage monsters (and changes accordingly the number of monsters on the board)
+                        case KeyEvent.VK_Z : terrain.nbmonsters-=Jou.damage(carte[i-1][j]);
+                            ((CaseTraversable) carte[i-1][j]).removeIfDead();break;
+                        case KeyEvent.VK_D: terrain.nbmonsters-=Jou.damage(carte[i][j+1]);
+                            ((CaseTraversable) carte[i][j+1]).removeIfDead();break;
+                        case KeyEvent.VK_S: terrain.nbmonsters-=Jou.damage(carte[i+1][j]);
+                            ((CaseTraversable) carte[i+1][j]).removeIfDead();break;
+                    }System.out.println("nb monsters : "+terrain.nbmonsters);
                     i=hauteur;
                     j=largeur;
                 }

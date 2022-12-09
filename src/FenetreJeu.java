@@ -1,7 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class FenetreJeu extends JPanel implements KeyListener {
     private Terrain terrain;
@@ -9,12 +13,26 @@ public class FenetreJeu extends JPanel implements KeyListener {
     private int hauteur, largeur;
     private JFrame frame;
 
+    private final BufferedImage door;
+    private final BufferedImage wall;
+    private final BufferedImage barrel;
+    private final BufferedImage sheep_side;
+    private final BufferedImage wolf;
+    private final BufferedImage shepherd;
     private int viej=0;
 
-    public FenetreJeu(Terrain t) {
+    public FenetreJeu(Terrain t) throws IOException {
         this.hauteur = t.getHauteur();
         this.largeur = t.getLargeur();
         this.terrain = t;
+
+        this.door = ImageIO.read(new File("assets/door.png"));
+        this.wall = ImageIO.read(new File("assets/wall.png"));
+        this.barrel = ImageIO.read(new File("assets/barrel.png"));
+        this.sheep_side = ImageIO.read(new File("assets/sheep_side.png"));
+        this.wolf = ImageIO.read(new File("assets/wolf.png"));
+        this.shepherd = ImageIO.read(new File("assets/shepherd.png"));
+
 
         setBackground(Color.GRAY);
         setPreferredSize(new Dimension(largeur * tailleCase, hauteur * tailleCase));
@@ -39,23 +57,32 @@ public class FenetreJeu extends JPanel implements KeyListener {
         for (int i=0;i<hauteur;i++){
             for(int j=0;j<largeur;j++){
                 if(carte[i][j] instanceof CaseIntraversable) {
-                    g.setColor(new Color(242,186,201));
-                    g.fillRect(j*24, i * 24, 24, 24);
+                    /*g.setColor(new Color(242,186,201));
+                    g.fillRect(j*24, i * 24, 24, 24);*/
+                    g.drawImage(wall,j*24,i*24,24,24,null);
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Obstacle) {
-                    g.setColor(new Color(238, 171, 13));
+                    /*g.setColor(new Color(238, 171, 13));
                     g.fillRect(j*24, i * 24, 24, 24);
+                    g.setColor(Color.black);
+                    g.drawRect(j*24,i*24,24,24);*/
+                    g.drawImage(barrel,j*24,i*24,24,24,null);
                 } else if (((CaseTraversable)carte[i][j]) instanceof Sortie) {
-                    g.setColor(new Color(223, 13, 238));
-                    g.fillRect(j*24, i * 24, 24, 24);
+                    /*g.setColor(new Color(223, 13, 238));
+                    g.fillRect(j*24, i * 24, 24, 24);*/
+                    g.drawImage(door,i*24,j*24,24,24,null);
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Personnage) {
-                    g.setColor(new Color(184, 238, 155));
-                    g.fillRect(j*24, i * 24, 24, 24);
+                    /*g.setColor(new Color(184, 238, 155));
+                    g.fillOval(j*24, i * 24, 24, 24);*/
+                    g.drawImage(sheep_side,j*24,i*24,24,24,null);
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Monstre) {
-                    g.setColor(new Color(229, 26, 26));
-                    g.fillRect(j*24, i * 24, 24, 24);
+                    /*g.setColor(new Color(229, 26, 26));
+                    g.fillRect(j*24, i * 24, 24, 24);*/
+                    g.drawImage(wolf,j*24,i*24,24,24,null);
                 } else if (((CaseTraversable)carte[i][j]).getContenu() instanceof Joueur) {
-                    g.setColor(new Color(32,170,200));
-                    g.fillRect(j*24, i * 24, 24, 24);
+                    /*g.setColor(new Color(32,170,200));
+                    g.fillOval(j*24, i * 24, 24, 24);*/
+                    g.drawImage(shepherd,j*24,i*24,24,24,null);
+
                     viej = ((CaseTraversable)carte[i][j]).getContenu().getResistance();
                     terrain.joueurStatut(false, ((CaseTraversable)carte[i][j]).getContenu().getResistance()); // tue le joueur si il a pris trop de dégats
                 }

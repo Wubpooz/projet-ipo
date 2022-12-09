@@ -17,7 +17,7 @@ public class Jeu {
 
 
     public static void main(String[] args) {
-        Jeu j = new Jeu("laby1.txt");
+        Jeu j = new Jeu("/assets/laby1.txt");
         j.terrain.print();
 
         for(int i=0;i<10;i++) {

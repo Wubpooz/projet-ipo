@@ -1,6 +1,6 @@
 public class Monstre extends EntiteMobile{
 
-    Monstre(Direction d){super(d);}
+    Monstre(Direction d){super(d,8);}   // on décide que les loups ont 8pv
     @Override
     public String toString(String bg){
         switch (d) {

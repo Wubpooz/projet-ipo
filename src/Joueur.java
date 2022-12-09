@@ -21,4 +21,13 @@ public class Joueur extends Entite{
         return false;
     }
 
+    public void damage(Case cible){     // permet de taper les monstres
+        if (!(cible instanceof CaseIntraversable) && !cible.estLibre() && ((CaseTraversable) cible).getContenu() instanceof Monstre) {
+            ((CaseTraversable) cible).getContenu().decRes(2);
+            ((CaseTraversable) cible).removeIfDead();
+        }
+
+    }
+
+
 }

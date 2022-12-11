@@ -5,7 +5,7 @@
 TP9 and TP10 completed  
   
 - [State.txt](https://gitlab.dsi.universite-paris-saclay.fr/mathieu.waharte/projet-ipo/-/blob/master/State.txt) : a file I used to track what bugs and features I had to fix/implement.  
-- [inheritance_scheme.txt](https://gitlab.dsi.universite-paris-saclay.fr/mathieu.waharte/projet-ipo/-/blob/master/inheritance_scheme.txt) : describes how the differents classes interacts between one another (arrow for inheritance and \[] for instanciations).
+- [inheritance_scheme.txt](https://gitlab.dsi.universite-paris-saclay.fr/mathieu.waharte/projet-ipo/-/blob/master/inheritance_scheme.txt) : describes how the differents classes interacts between one another (arrow for inheritance and \[ ] for instanciations).
 
 
 ## Features

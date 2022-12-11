@@ -73,7 +73,7 @@ public class Terrain {
     public int getHauteur(){return hauteur;}
     public int getLargeur(){return largeur;}
 
-    public void joueurStatut(boolean s,int res){
+    public void joueurStatut(boolean s,int res){    //permet de passer l'état du joueur de FenetreJeu à Jeu
         if (res<=0) {joueur=-1;}
         else if(s){joueur=0;}
     }

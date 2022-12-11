@@ -12,7 +12,6 @@ public class Joueur extends Entite{
         }
     }
 
-    //j'ai pensé à la faire return 1 si on est sur la sortie mais c'est chiant pour le faire parvenir à la classe Jeu.  * en fait je vais le faire comme ça en apssant par terrain lol
     public boolean sors(CaseTraversable courante){
         if(courante instanceof Sortie){
             courante.vide();

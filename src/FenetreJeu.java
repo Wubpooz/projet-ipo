@@ -26,12 +26,12 @@ public class FenetreJeu extends JPanel implements KeyListener {
         this.largeur = t.getLargeur();
         this.terrain = t;
 
-        this.door = ImageIO.read(new File("assets/door.png"));
-        this.wall = ImageIO.read(new File("assets/wall.png"));
-        this.barrel = ImageIO.read(new File("assets/barrel.png"));
-        this.sheep_side = ImageIO.read(new File("assets/sheep_side.png"));
-        this.wolf = ImageIO.read(new File("assets/wolf.png"));
-        this.shepherd = ImageIO.read(new File("assets/shepherd.png"));
+        this.door = ImageIO.read(new File("./assets/door.png"));
+        this.wall = ImageIO.read(new File("./assets/wall.png"));
+        this.barrel = ImageIO.read(new File("./assets/barrel.png"));
+        this.sheep_side = ImageIO.read(new File("./assets/sheep_side.png"));
+        this.wolf = ImageIO.read(new File("./assets/wolf.png"));
+        this.shepherd = ImageIO.read(new File("./assets/shepherd.png"));
 
 
         setBackground(Color.GRAY);

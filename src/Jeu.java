@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Jeu {
 
-    Terrain terrain;
+    final Terrain terrain;
     int sortis;
 
     int dead;
@@ -17,7 +17,7 @@ public class Jeu {
 
 
     public static void main(String[] args) {
-        Jeu j = new Jeu("laby1.txt");
+        Jeu j = new Jeu("/assets/laby1.txt");
         j.terrain.print();
 
         for(int i=0;i<10;i++) {
@@ -42,7 +42,7 @@ public class Jeu {
             i = rnd.nextInt(terrain.getHauteur());
             j = rnd.nextInt(terrain.getLargeur());
             e = ((CaseTraversable) cases[i][j]).getContenu();
-        }while(!(e instanceof EntiteMobile));
+        }while(!(e instanceof EntiteMobile) || !((EntiteMobile) e).peutJouer());
 
         int ipr = i;
         int jpr = j;
@@ -54,9 +54,11 @@ public class Jeu {
         }
 
 
+        if(((CaseTraversable) cases[i][j]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]) instanceof Sortie){sortis++;}
+
         ((EntiteMobile) e).action((CaseTraversable) cases[i][j], (CaseTraversable) cases[ipr][jpr]);
 
-        if(((CaseTraversable) cases[i][j]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]) instanceof Sortie){sortis++;}
+
         if(((CaseTraversable) cases[i][j]).getContenu() instanceof Monstre && ((CaseTraversable) cases[ipr][jpr]).getContenu() instanceof Personnage && ((CaseTraversable) cases[ipr][jpr]).getContenu().getResistance()==0){dead++;}
 
         for(int k=0;k<terrain.getHauteur();k++){
@@ -70,6 +72,7 @@ public class Jeu {
 
         if(terrain.joueur==0){sortis+=1;}
         if(terrain.joueur==-1){sortis/=2;}
+        if (terrain.nbmonsters==0){sortis += (sortis==0 ? 1 : sortis);}       // when you kill all monsters, you get a score of one at least or double
 
         ((CaseTraversable) cases[i][j]).removeIfDead();
         ((CaseTraversable) cases[ipr][jpr]).removeIfDead();
@@ -78,5 +81,5 @@ public class Jeu {
     }
 
 
-    public boolean partieFinie() {return sortis+dead>=3 || terrain.joueur==0 || terrain.joueur==-1;}
+    public boolean partieFinie() {return sortis+dead>=3 || terrain.joueur==0 || terrain.joueur==-1 || terrain.nbmonsters==0;}
 }
